@@ -6,13 +6,26 @@ class App extends Component {
     super();
     this.state = {
       message: 'Hello World!',
-      newTodo: ''
+      newTodo: '',
+      todos: [{
+        title: 'Learn React',
+        done: false
+      },
+      {
+        title: 'Learn React Native',
+        done: false
+      }]
     };
   }
 
   formSubmitted(event){
     event.preventDefault();
-    console.log(this.state.newTodo);
+    this.setState({
+      todos: [...this.state.todos, {
+        title: this.state.newTodo,
+        done: false
+      }]
+    })
   }
 
   newTodoChanged(event){
@@ -34,6 +47,12 @@ class App extends Component {
           </input>
           <button type="submit">Add Todo</button>
         </form>
+
+        <ul>
+          {this.state.todos.map(
+            todo => {return <li key={todo.title} >{todo.title}</li>})
+          }
+        </ul>
       </div>
     );
   }
