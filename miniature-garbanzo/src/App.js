@@ -55,10 +55,11 @@ class App extends Component {
   }
 
   allDone(){
+    this.value = (this.value === true) ? false : true;
     const todos = this.state.todos.map(todo => {
       return {
         title: todo.title,
-        done: true,
+        done: this.value,
       };
     });
 
@@ -81,7 +82,7 @@ class App extends Component {
           </input>
           <button type="submit">Add Todo</button>
         </form>
-        <button onClick={() => this.allDone()}>All Done</button>
+        <button value="" onClick={() => this.allDone()}>All Done</button>
         <ul>
           {this.state.todos.map((todo, index) => {
               return (<li key={todo.title}>
