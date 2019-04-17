@@ -5,7 +5,7 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      message: 'Hello World!',
+      message: 'Daily Todo 4 the World!',
       newTodo: '',
       todos: [{
         title: 'Learn React',
@@ -37,8 +37,10 @@ class App extends Component {
 
   toggleTodoDone(event, index){
     const todos = [...this.state.todos]; // copy the array
-    todos[index] = {...todos[index]}; // copy the todo
-    todos[index].done = event.target.checked; // update done property on copied array
+    todos[index] = {
+      ...todos[index],
+      done: event.target.checked
+    }
     this.setState({
       todos
     })
@@ -69,7 +71,7 @@ class App extends Component {
     return (
       <div className="App">
         <h3>{this.state.message}</h3>
-        <form onSubmit={this.formSubmitted.bind(this)}>
+        <form onSubmit={(event) => this.formSubmitted(event)}>
           <label htmlFor="newTodo">New Todo</label>
           <input 
             onChange={(event) => this.newTodoChanged(event)} 
