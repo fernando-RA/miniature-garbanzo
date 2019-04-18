@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import NewTodoForm from './NewTodoForm';
-import TodoList from './TodoList';
+import NewTodoForm from './components/NewTodoForm';
+import TodoList from './components/TodoList';
 
 class App extends Component {
   constructor(){
